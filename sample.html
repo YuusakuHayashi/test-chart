@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <p style="font-weight: bold;">サンプルチャート</p>
+  <div id="chart"></div>
+  <script src="https://unpkg.com/apexcharts/dist/apexcharts.min.js"></script>
+  <script>
+    var options = {
+      chart: {
+          height: 350,
+          type: 'area',
+      },
+      dataLabels: {
+          enabled: false 
+      },
+      stroke: {
+          curve: 'smooth'
+      },
+      series: [{
+          name: 'Month',
+          data: [31, 40, 28, 51, 42, 109, 100]
+      }, {
+          name: 'Day',
+          data: [11, 32, 45, 32, 34, 52, 41]
+      }],
+
+      xaxis: {
+        type: 'datetime',
+        categories: [
+	  "2018-09-19T00:00:00", 
+	  "2018-09-19T01:30:00", 
+	  "2018-09-19T02:30:00", 
+	  "2018-09-19T03:30:00", 
+	  "2018-09-19T04:30:00", 
+	  "2018-09-19T05:30:00", 
+	  "2018-09-19T06:30:00",
+	],                
+      },
+      yaxis: [ 
+	{
+	  seriesName: 'Day',
+	  axisTicks: {
+	    show: true, 
+	  },
+	  axisBorder: {
+	    show: true, 
+	    color: '#00E396',
+	  },
+	  title: {
+	    text: 'Day(一日の使用頻度)',
+	  },
+	},
+        {
+	  seriesName: 'Month',
+	  opposite: 'true',
+	  title: {
+	    text: 'Month(月間の使用頻度)' 
+	  },
+	  axisTicks: {
+	    show: true, 
+	  },
+	  axisBorder: {
+	    show: true, 
+	    color: '#008FFB',
+	  },
+	},
+      ],
+      tooltip: {
+        x: {
+            format: 'dd/MM/yy HH:mm'
+        },
+      },
+    }
+
+    var chart = new ApexCharts(
+        document.querySelector("#chart"),
+        options
+    );
+
+    chart.render();  
+	</script>
+</html>
+
